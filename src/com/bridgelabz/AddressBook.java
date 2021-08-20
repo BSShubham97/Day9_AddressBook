@@ -109,6 +109,9 @@ public class AddressBook {
     }
 
     public void displayAddressBook() {
+        System.out.println("------------------------------------");
+        System.out.println("____________ADDRESS BOOK____________");
+        System.out.println("____________________________________");
         System.out.println("FIRST NAME: " + getFirstName());
         System.out.println("LAST NAME: " + getLastName());
         System.out.println("ADDRESS: " + getAddress());
@@ -117,13 +120,15 @@ public class AddressBook {
         System.out.println("ZIP: " + getZip());
         System.out.println("PHONE-NUMBER: " + getPhoneNumber());
         System.out.println("E-MAIL: " + getEmail());
+        System.out.println("____________________________________");
     }
 
     public void editContact() {
+
         System.out.println("SELECT THE OPTION YOU WANT TO EDIT");
-        System.out.println("1.Firstname / 2.Lastname / 3.Address / 4.City / 5.State / 6.ZIP / 7.Phone / 8.Email");
-        int option = sc.nextInt();
-        switch (option) {
+        System.out.println("1.Firstname / 2.Lastname / 3.Address / 4.City / 5.State / 6.ZIP / 7.Phone / 8.Email ");
+        int field = sc.nextInt();
+        switch (field) {
             case 1:
                 System.out.println("Enter New:");
                 firstName = sc.next();
@@ -164,24 +169,46 @@ public class AddressBook {
                 email = sc.next();
                 setFirstName(email);
                 break;
-
         }
     }
 
+    public static void main(String[] args) {
+        AddressBook addressBook = new AddressBook();
+
+        Scanner sc = new Scanner (System.in);
+        boolean quit = false;
+
+        do {
+
+            System.out.println("Choose a option: ");
+            System.out.println("1 - CREATE");
+            System.out.println("2 - DISPLAY");
+            System.out.println("3 - EDIT");
+            System.out.println("4 - QUIT");
+
+            System.out.print("Enter Option: ");
+            int option = sc.nextInt();
+            switch (option) {
+
+                case 1:
+                    addressBook.createContact();
+                    break;
+                case 2:
+                    addressBook.displayAddressBook();
+                    break;
+                case 3:
+                    addressBook.editContact();
+                    break;
+                case 4:
+                    System.out.println("PROGRAM EXITED !");
+                    quit = true;
+                    break;
+            }
+        }
+        while (!quit);
 
 
-
-        public static void main (String[]args){
-            AddressBook addressBook = new AddressBook();
-            addressBook.createContact();
-            System.out.println("--------------------------------------");
-            System.out.println("------------ADDRESS BOOK--------------");
-            addressBook.displayAddressBook();
-            System.out.println("--------------------------------------");
-
-            addressBook.editContact();
-            addressBook.displayAddressBook();
     }
-    }
+}
 
 
